@@ -1,9 +1,9 @@
 package com.inditex.pricing.domain.valueobject;
 
 public final class Priority {
-    private final long value;
+    private final int value;
 
-    private Priority(long value) {
+    private Priority(int value) {
         this.value = value;
     }
 
@@ -11,7 +11,7 @@ public final class Priority {
         return value;
     }
 
-    public static Priority of(long value) {
+    public static Priority of(int value) {
         return new Priority(value);
     }
 }
