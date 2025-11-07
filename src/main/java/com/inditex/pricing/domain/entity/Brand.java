@@ -1,21 +1,22 @@
 package com.inditex.pricing.domain.entity;
 
-import com.inditex.pricing.domain.exception.BrandNameCannotBeNullException;
+import com.inditex.pricing.domain.valueobject.BrandId;
+import com.inditex.pricing.domain.valueobject.BrandName;
 
 public final class Brand {
-    private final long id;
-    private final String name;
+    private final BrandId id;
+    private final BrandName name;
 
-    private Brand(long id, String name) {
+    private Brand(BrandId id, BrandName name) {
         this.id = id;
         this.name = name;
     }
 
-    public long getId() {
+    public BrandId getId() {
         return id;
     }
 
-    public String getName() {
+    public BrandName getName() {
         return name;
     }
 
@@ -24,30 +25,23 @@ public final class Brand {
     }
 
     public static class Builder {
-        private long id;
-        private String name;
+        private BrandId id;
+        private BrandName name;
 
         public Builder() {}
 
-        public Builder withId(long id) {
+        public Builder withId(BrandId id) {
             this.id = id;
             return this;
         }
 
-        public Builder withName(String name) {
+        public Builder withName(BrandName name) {
             this.name = name;
             return this;
         }
 
         public Brand build() {
-            validate(name);
             return new Brand(id, name);
-        }
-
-        private void validate(String name) {
-            if (name == null || name.trim().isEmpty()) {
-                throw new BrandNameCannotBeNullException();
-            }
         }
     }
 }
