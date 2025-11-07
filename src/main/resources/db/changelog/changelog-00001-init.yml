@@ -1,0 +1,72 @@
+databaseChangeLog:
+  - changeSet:
+      id: 00001-init
+      author: sheila.ros
+      changes:
+        - createTable:
+            tableName: BRAND
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: NAME
+                  type: VARCHAR(100)
+                  constraints:
+                    nullable: false
+
+        - createTable:
+            tableName: PRICE
+            columns:
+              - column:
+                  name: ID
+                  type: BIGINT
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: BRAND_ID
+                  type: BIGINT
+              - column:
+                  name: PRODUCT_ID
+                  type: BIGINT
+              - column:
+                  name: START_DATE
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: END_DATE
+                  type: TIMESTAMP
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRICE
+                  type: DECIMAL(10,2)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: CURRENCY
+                  type: VARCHAR(3)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: PRIORITY
+                  type: INT
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: PRICE
+            baseColumnNames: BRAND_ID
+            referencedTableName: BRAND
+            referencedColumnNames: id
+            constraintName: fk_price_brand
+            onDelete: CASCADE
+
+rollback:
+  - dropTable:
+      tableName: PRICE
+  - dropTable:
+      tableName: BRAND
