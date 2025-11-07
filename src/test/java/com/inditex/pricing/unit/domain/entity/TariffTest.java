@@ -18,9 +18,10 @@ class TariffTest {
         Amount amount = Amount.of(new BigDecimal("35.50"));
         Currency currency = Currency.EUR;
         Price price = Price.of(amount, currency);
-        Brand brand = Brand.builder().withId(1L).withName("ZARA").build();
+        Brand brand = Brand.builder().withId(BrandId.of(1L))
+                .withName(BrandName.of("ZARA")).build();
         ProductId productId = ProductId.of(35455L);
-        Priority priority = Priority.of(0L);
+        Priority priority = Priority.of(0);
         DateTime start = DateTime.of("2020-06-14-00.00.00");
         DateTime end = DateTime.of("2020-12-31-23.59.59");
 
