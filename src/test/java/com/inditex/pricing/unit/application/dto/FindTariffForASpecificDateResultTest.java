@@ -1,5 +1,6 @@
-package com.inditex.pricing.application.dto;
+package com.inditex.pricing.unit.application.dto;
 
+import com.inditex.pricing.application.dto.FindTariffForASpecificDateResult;
 import com.inditex.pricing.domain.entity.Tariff;
 import com.inditex.pricing.utils.TariffMotherObject;
 import org.junit.jupiter.api.Test;

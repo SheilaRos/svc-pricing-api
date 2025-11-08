@@ -40,7 +40,7 @@ public class PriceDatabaseRepositoryTest {
         BrandId brandId = BrandId.of(1L);
         ProductId productId = ProductId.of(35455L);
 
-        when(jdbc.findByBrandIdProjectIdAndDate(brandId.getValue(), productId.getValue(), date.getValue()))
+        when(jdbc.findByBrandIdProductIdAndDate(brandId.getValue(), productId.getValue(), date.getValue()))
                 .thenReturn(Optional.of(projection));
         when(mapper.mapToDomainObjectFromProjection(projection)).thenReturn(tariffExpected);
 
@@ -50,7 +50,7 @@ public class PriceDatabaseRepositoryTest {
         assertEquals(tariffExpected, tariff.get());
 
         InOrder order = inOrder(mapper, jdbc);
-        order.verify(jdbc, times(1)).findByBrandIdProjectIdAndDate(brandId.getValue(),
+        order.verify(jdbc, times(1)).findByBrandIdProductIdAndDate(brandId.getValue(),
                 productId.getValue(), date.getValue());
         order.verify(mapper, times(1)).mapToDomainObjectFromProjection(projection);
     }
@@ -61,7 +61,7 @@ public class PriceDatabaseRepositoryTest {
         BrandId brandId = BrandId.of(1L);
         ProductId productId = ProductId.of(35455L);
 
-        when(jdbc.findByBrandIdProjectIdAndDate(brandId.getValue(), productId.getValue(), date.getValue()))
+        when(jdbc.findByBrandIdProductIdAndDate(brandId.getValue(), productId.getValue(), date.getValue()))
                 .thenReturn(Optional.empty());
 
         Optional<Tariff> tariff = repository.findTariffsApplicable(date, brandId, productId);
@@ -69,7 +69,7 @@ public class PriceDatabaseRepositoryTest {
         assertFalse(tariff.isPresent());
 
         InOrder order = inOrder(mapper, jdbc);
-        order.verify(jdbc, times(1)).findByBrandIdProjectIdAndDate(brandId.getValue(),
+        order.verify(jdbc, times(1)).findByBrandIdProductIdAndDate(brandId.getValue(),
                 productId.getValue(), date.getValue());
         verifyNoInteractions(mapper);
     }

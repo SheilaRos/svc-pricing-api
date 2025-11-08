@@ -25,7 +25,7 @@ public class PriceDatabaseRepository implements TariffRepository {
 
     @Override
     public Optional<Tariff> findTariffsApplicable(DateTime dateTime, BrandId brandId, ProductId productId) {
-        Optional<PriceProjection> price = this.repository.findByBrandIdProjectIdAndDate(brandId.getValue(),
+        Optional<PriceProjection> price = this.repository.findByBrandIdProductIdAndDate(brandId.getValue(),
                 productId.getValue(), dateTime.getValue());
 
         if (price.isEmpty()) {

@@ -10,11 +10,15 @@ class BrandEntityTest {
     @Test
     void createBrandEntityWithAllValuesSuccessfully() {
 
-        BrandEntity entity = BrandEntity.builder()
+        BrandEntity.BrandEntityBuilder builder = BrandEntity.builder()
                 .id(1L)
-                .name("ZARA")
-                .build();
+                .name("ZARA");
 
+        String builderStr = builder.toString();
+        assertNotNull(builderStr);
+        assertFalse(builderStr.isBlank());
+
+        BrandEntity entity = builder.build();
         assertNotNull(entity);
         assertEquals(1L, entity.id());
         assertEquals("ZARA", entity.name());

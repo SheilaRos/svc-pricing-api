@@ -1,5 +1,6 @@
-package com.inditex.pricing.application.dto;
+package com.inditex.pricing.unit.application.dto;
 
+import com.inditex.pricing.application.dto.FindTariffForASpecificDateQuery;
 import com.inditex.pricing.domain.valueobject.BrandId;
 import com.inditex.pricing.domain.valueobject.DateTime;
 import com.inditex.pricing.domain.valueobject.ProductId;

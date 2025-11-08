@@ -14,10 +14,10 @@ public interface PriceJdbcRepository extends CrudRepository<PriceEntity, String>
             SELECT p.*, b.name as BRAND_NAME
             from PRICE p
             INNER JOIN BRAND b on p.BRAND_ID = b.ID
-            WHERE p.BRAND_ID = :brandId AND p.PROJECT_ID = :projectId
+            WHERE p.BRAND_ID = :brandId AND p.PRODUCT_ID = :productId
             AND :date BETWEEN START_DATE AND END_DATE
             ORDER BY p.PRIORITY DESC
-            LIMIT 1;
+            LIMIT 1
             """)
-    Optional<PriceProjection> findByBrandIdProjectIdAndDate(long brandId, long projectId, LocalDateTime date);
+    Optional<PriceProjection> findByBrandIdProductIdAndDate(long brandId, long productId, LocalDateTime date);
 }

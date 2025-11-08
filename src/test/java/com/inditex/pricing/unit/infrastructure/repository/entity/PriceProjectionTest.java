@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class PriceProjectionTest {
 
@@ -15,7 +15,7 @@ class PriceProjectionTest {
         LocalDateTime start = LocalDateTime.of(2020, 6, 14, 0, 0);
         LocalDateTime end = LocalDateTime.of(2020, 12, 31, 23, 59);
 
-        PriceProjection price = PriceProjection.builder()
+         PriceProjection.PriceProjectionBuilder builder = PriceProjection.builder()
                 .id(1L)
                 .brandId(2L)
                 .productId(35455L)
@@ -24,8 +24,13 @@ class PriceProjectionTest {
                 .currency("EUR")
                 .startDate(start)
                 .endDate(end)
-                .brandName("ZARA")
-                .build();
+                .brandName("ZARA");
+
+        String builderStr = builder.toString();
+        assertNotNull(builderStr);
+        assertFalse(builderStr.isBlank());
+
+        PriceProjection price = builder.build();
 
         assertEquals(1L, price.id());
         assertEquals(2L, price.brandId());

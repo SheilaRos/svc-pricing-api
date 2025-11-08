@@ -1,4 +1,4 @@
-package com.inditex.pricing.application.usecase;
+package com.inditex.pricing.unit.application.usecase;
 
 import com.inditex.pricing.application.TariffNotFound;
 import com.inditex.pricing.application.dto.FindTariffForASpecificDateQuery;
