@@ -3,6 +3,7 @@ package com.inditex.pricing.infrastructure.userinterface.controller;
 import com.inditex.pricing.application.dto.FindTariffForASpecificDateQuery;
 import com.inditex.pricing.application.dto.FindTariffForASpecificDateResult;
 import com.inditex.pricing.application.useCase.FindTariffForASpecificDateUseCase;
+import com.inditex.pricing.infrastructure.userinterface.mapper.FindTariffForASpecificDateResponseMapper;
 import com.inditex.pricing.infrastructure.userinterface.response.FindTariffForASpecificDateResponse;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -21,6 +22,7 @@ import java.time.LocalDateTime;
 @RequestMapping("/prices")
 @AllArgsConstructor
 public class FindTariffForASpecificDateController {
+    private final FindTariffForASpecificDateResponseMapper responseMapper;
     private final FindTariffForASpecificDateUseCase useCase;
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,6 +38,6 @@ public class FindTariffForASpecificDateController {
         FindTariffForASpecificDateQuery query = new FindTariffForASpecificDateQuery(brandId, productId, date);
         FindTariffForASpecificDateResult result = useCase.get(query);
 
-        return ResponseEntity.ok(new FindTariffForASpecificDateResponse(result));
+        return ResponseEntity.ok(this.responseMapper.map(result));
     }
 }

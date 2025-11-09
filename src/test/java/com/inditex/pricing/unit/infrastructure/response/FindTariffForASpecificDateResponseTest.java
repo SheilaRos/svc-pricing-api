@@ -48,7 +48,13 @@ class FindTariffForASpecificDateResponseTest {
                         LocalDateTime.of(2020, 12, 31, 23, 59)
                 );
 
-        FindTariffForASpecificDateResponse response = new FindTariffForASpecificDateResponse(result);
+        FindTariffForASpecificDateResponse response = new FindTariffForASpecificDateResponse(999L,
+                1L,
+                35455L,
+                BigDecimal.valueOf(35.50),
+                "EUR",
+                LocalDateTime.of(2020, 6, 14, 0, 0),
+                LocalDateTime.of(2020, 12, 31, 23, 59));
 
         assertNotNull(response);
         assertEquals(result.id(), response.id());
