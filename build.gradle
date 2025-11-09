@@ -3,11 +3,16 @@ plugins {
 	id 'org.springframework.boot' version '3.5.7'
 	id 'io.spring.dependency-management' version '1.1.7'
     id 'jacoco'
+    id 'application'
 }
 
 group = 'com.inditex'
 version = '0.0.1-SNAPSHOT'
 description = 'Inditex Coding Challenge Sheila Ros'
+
+application {
+    mainClass = 'com.inditex.pricing.PricingApplication'
+}
 
 jacoco {
     toolVersion = "0.8.13"
@@ -57,7 +62,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
-    exclude 'karate/**'
+    exclude '**/karate/**'
     testLogging {
         events "passed", "skipped", "failed"
     }
