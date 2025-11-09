@@ -57,7 +57,7 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
-
+    exclude 'karate/**'
     testLogging {
         events "passed", "skipped", "failed"
     }
@@ -83,4 +83,40 @@ jacocoTestReport {
                 })
         )
     }
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDirs 'src/test/resources', 'src/test/java'
+            include '**/*.feature', '**/*.json', '**/*.xml'
+        }
+    }
+}
+
+tasks.register('karate', Test) {
+    useJUnitPlatform()
+    include '**/KarateTestsRunner.class'
+
+    systemProperty 'karate.options', '--reportdir build/karate-reports --tags ~@ignore'
+    testLogging {
+        events "passed", "failed", "skipped"
+        showStandardStreams = true
+    }
+
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "\n==== Karate Summary ===="
+            println "Tests: ${result.testCount}, Passed: ${result.successfulTestCount}, Failed: ${result.failedTestCount}, Skipped: ${result.skippedTestCount}"
+            println "Report: build/karate-reports/karate-summary.html"
+            println "========================\n"
+        }
+    }
+
+    testLogging {
+        showStandardStreams = true
+    }
+    systemProperty 'karate.logPrettyRequest', 'true'
+    systemProperty 'karate.logPrettyResponse', 'true'
+    systemProperty 'karate.configure', "{ report: { showLog: true, showAllSteps: true } }"
 }
