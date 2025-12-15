@@ -1,6 +1,6 @@
 package com.inditex.pricing.infrastructure.exception;
 
-import com.inditex.pricing.application.TariffNotFound;
+import com.inditex.pricing.application.exception.TariffNotFoundException;
 import com.inditex.pricing.domain.exception.ValidationException;
 import com.inditex.pricing.infrastructure.userinterface.response.ErrorResponse;
 import org.springframework.http.HttpStatus;
@@ -22,8 +22,8 @@ public class PricingControllerAdvice {
         return new ResponseEntity<>(err, HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(TariffNotFound.class)
-    private static ResponseEntity<ErrorResponse> tariffNotFound(TariffNotFound e) {
+    @ExceptionHandler(TariffNotFoundException.class)
+    private static ResponseEntity<ErrorResponse> tariffNotFound(TariffNotFoundException e) {
         ErrorResponse err = new ErrorResponse(STATUS, e.getMessage());
 
         return new ResponseEntity<>(err, HttpStatus.NOT_FOUND);

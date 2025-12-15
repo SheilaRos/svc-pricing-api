@@ -1,6 +1,6 @@
 package com.inditex.pricing.unit.application.usecase;
 
-import com.inditex.pricing.application.TariffNotFound;
+import com.inditex.pricing.application.exception.TariffNotFoundException;
 import com.inditex.pricing.application.dto.FindTariffForASpecificDateQuery;
 import com.inditex.pricing.application.dto.FindTariffForASpecificDateResult;
 import com.inditex.pricing.application.useCase.FindTariffForASpecificDateUseCase;
@@ -63,7 +63,7 @@ class FindTariffForASpecificDateUseCaseTest {
         when(repository.findTariffsApplicable(query.date(), query.brandId(), query.productId()))
                 .thenReturn(Optional.empty());
 
-        assertThrows(TariffNotFound.class, () -> useCase.get(query));
+        assertThrows(TariffNotFoundException.class, () -> useCase.get(query));
 
         verify(repository, times(1))
                 .findTariffsApplicable(query.date(), query.brandId(), query.productId());
