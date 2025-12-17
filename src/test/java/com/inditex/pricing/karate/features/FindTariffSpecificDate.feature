@@ -18,7 +18,7 @@ Feature: Find brand product tariff for a specific date
       | Test 1      | 1       | 35455     | 2020-06-14T10:00:00 | {"id":1,"brandId":1,"productId":35455,"price":35.50,"currency":"EUR","startDate":"2020-06-14T00:00:00","endDate":"2020-12-31T23:59:59"} |
       | Test 2      | 1       | 35455     | 2020-06-14T16:00:00 | {"id":2,"brandId":1,"productId":35455,"price":25.45,"currency":"EUR","startDate":"2020-06-14T15:00:00","endDate":"2020-06-14T18:30:00"} |
       | Test 3      | 1       | 35455     | 2020-06-14T21:00:00 | {"id":1,"brandId":1,"productId":35455,"price":35.50,"currency":"EUR","startDate":"2020-06-14T00:00:00","endDate":"2020-12-31T23:59:59"} |
-      | Test 4      | 1       | 35455     | 2020-06-15T10:00:00 | {"id":3,"brandId":1,"productId":35455,"price":30.50,"currency":"EUR","startDate":"2020-06-15T10:00:00","endDate":"2020-06-15T11:00:00"} |
+      | Test 4      | 1       | 35455     | 2020-06-15T10:00:00 | {"id":3,"brandId":1,"productId":35455,"price":30.50,"currency":"EUR","startDate":"2020-06-15T00:00:00","endDate":"2020-06-15T11:00:00"} |
       | Test 5      | 1       | 35455     | 2020-06-16T21:00:00 | {"id":4,"brandId":1,"productId":35455,"price":38.95,"currency":"EUR","startDate":"2020-06-15T16:00:00","endDate":"2020-12-31T23:59:59"} |
 
 
