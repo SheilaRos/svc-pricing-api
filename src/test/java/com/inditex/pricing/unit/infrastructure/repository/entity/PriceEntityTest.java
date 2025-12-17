@@ -1,5 +1,6 @@
 package com.inditex.pricing.unit.infrastructure.repository.entity;
 
+import com.inditex.pricing.infrastructure.repository.entity.BrandEntity;
 import com.inditex.pricing.infrastructure.repository.entity.PriceEntity;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,12 @@ class PriceEntityTest {
 
          PriceEntity.PriceEntityBuilder builder = PriceEntity.builder()
                 .id(1L)
-                .brandId(2L)
+                .brand(
+                        BrandEntity.builder()
+                                .id(2L)
+                                .name("ZARA")
+                                .build()
+                )
                 .productId(35455L)
                 .priority(1)
                 .price(new BigDecimal("35.50"))
@@ -31,13 +37,14 @@ class PriceEntityTest {
 
         PriceEntity price = builder.build();
 
-        assertEquals(1L, price.id());
-        assertEquals(2L, price.brandId());
-        assertEquals(35455L, price.productId());
-        assertEquals(1, price.priority());
-        assertEquals(new BigDecimal("35.50"), price.price());
-        assertEquals("EUR", price.currency());
-        assertEquals(start, price.startDate());
-        assertEquals(end, price.endDate());
+        assertEquals(1L, price.getId());
+        assertEquals(2L, price.getBrand().getId());
+        assertEquals("ZARA", price.getBrand().getName());
+        assertEquals(35455L, price.getProductId());
+        assertEquals(1, price.getPriority());
+        assertEquals(new BigDecimal("35.50"), price.getPrice());
+        assertEquals("EUR", price.getCurrency());
+        assertEquals(start, price.getStartDate());
+        assertEquals(end, price.getEndDate());
     }
 }

@@ -7,11 +7,10 @@ To ensure the separation of responsibilities and improve the maintenance of the 
 ## How run
 Requirements:
 - Java: 21
-- gradle: 8.14
+- maven: 3.9.9
 
-You can run with the command `./gradlew run`
-You can run the unit and persistence tests with the command `./gradlew clean build`
-You can run the application test with the command `./gradlew karate`
+You can run with the command `mvn spring-boot:run`
+You can run the unit and persistence tests and karate tests with the command `mvn verify`
 
 ## Architecture Overview
 

@@ -1,14 +1,21 @@
 package com.inditex.pricing.infrastructure.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 @Table(name = "BRAND")
-public record BrandEntity(
-        @Id
-        long id,
-        String name
-) {
+public class BrandEntity {
+    @Id
+    private Long id;
+    private String name;
 }

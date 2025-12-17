@@ -3,7 +3,8 @@ package com.inditex.pricing.unit.infrastructure.repository.mapper;
 import com.inditex.pricing.domain.entity.Brand;
 import com.inditex.pricing.domain.entity.Tariff;
 import com.inditex.pricing.domain.valueobject.*;
-import com.inditex.pricing.infrastructure.repository.entity.PriceProjection;
+import com.inditex.pricing.infrastructure.repository.entity.BrandEntity;
+import com.inditex.pricing.infrastructure.repository.entity.PriceEntity;
 import com.inditex.pricing.infrastructure.repository.mapper.PriceEntityMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -26,16 +27,20 @@ class PriceEntityMapperTest {
         LocalDateTime start = LocalDateTime.of(2020, 6, 14, 0, 0);
         LocalDateTime end = LocalDateTime.of(2020, 12, 31, 23, 59);
 
-        PriceProjection projection = PriceProjection.builder()
+        PriceEntity projection = PriceEntity.builder()
                 .id(1L)
-                .brandId(2L)
+                .brand(
+                        BrandEntity.builder()
+                                .id(2L)
+                                .name("ZARA")
+                                .build()
+                )
                 .productId(35455L)
                 .priority(1)
                 .price(new BigDecimal("35.50"))
                 .currency("EUR")
                 .startDate(start)
                 .endDate(end)
-                .brandName("ZARA")
                 .build();
 
         Tariff tariff = mapper.mapToDomainObjectFromProjection(projection);

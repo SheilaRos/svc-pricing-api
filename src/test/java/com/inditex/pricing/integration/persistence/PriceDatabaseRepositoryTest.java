@@ -5,7 +5,7 @@ import com.inditex.pricing.domain.repository.TariffRepository;
 import com.inditex.pricing.domain.valueobject.BrandId;
 import com.inditex.pricing.domain.valueobject.DateTime;
 import com.inditex.pricing.domain.valueobject.ProductId;
-import com.inditex.pricing.infrastructure.repository.jdbc.PriceJdbcRepository;
+import com.inditex.pricing.infrastructure.repository.jdbc.PriceJpaRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -19,12 +19,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-@AutoConfigureTestDatabase
+@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
 class PriceDatabaseRepositoryTest {
 
     @Autowired
-    private PriceJdbcRepository jdbcRepository;
+    private PriceJpaRepository jpaRepository;
 
     @Autowired
     private TariffRepository repository;

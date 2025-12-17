@@ -20,7 +20,7 @@ class BrandEntityTest {
 
         BrandEntity entity = builder.build();
         assertNotNull(entity);
-        assertEquals(1L, entity.id());
-        assertEquals("ZARA", entity.name());
+        assertEquals(1L, entity.getId());
+        assertEquals("ZARA", entity.getName());
     }
 }

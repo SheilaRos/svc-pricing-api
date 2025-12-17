@@ -36,7 +36,7 @@ databaseChangeLog:
               - column: { name: ID, valueNumeric: 3 }
               - column: { name: BRAND_ID, valueNumeric: 1 }
               - column: { name: PRODUCT_ID, valueNumeric: 35455 }
-              - column: { name: START_DATE, valueDate: "2020-06-15T10:00:00" }
+              - column: { name: START_DATE, valueDate: "2020-06-15T00:00:00" }
               - column: { name: END_DATE, valueDate: "2020-06-15T11:00:00" }
               - column: { name: PRICE, valueNumeric: 30.50 }
               - column: { name: CURRENCY, value: "EUR" }

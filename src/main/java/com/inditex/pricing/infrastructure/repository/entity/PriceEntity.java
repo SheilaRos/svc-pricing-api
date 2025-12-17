@@ -1,23 +1,31 @@
 package com.inditex.pricing.infrastructure.repository.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.relational.core.mapping.Table;
-
+import lombok.Getter;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import jakarta.persistence.*;
+import lombok.NoArgsConstructor;
 
 @Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 @Table(name = "PRICE")
-public record PriceEntity(
-        @Id
-        long id,
-        long brandId,
-        long productId,
-        int priority,
-        BigDecimal price,
-        String currency,
-        LocalDateTime startDate,
-        LocalDateTime endDate
-) {
+public class PriceEntity{
+    @Id
+    private long id;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "BRAND_ID", nullable = false)
+    private BrandEntity brand;
+
+    private long productId;
+    private int priority;
+    private BigDecimal price;
+    private String currency;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
 }
